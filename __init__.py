@@ -28,16 +28,16 @@ def valid_plan_file():
 
 # Check if path for workout data exists:
 if not os.path.exists('weight_lifting_data.csv') or not valid_data_file():
-    # weight_lifting_data = pd.DataFrame(columns = ['Movement Name', 'Set Number', 'Weight', 'Reps', 'Date','Workout Name'])
-    # weight_lifting_data.to_csv('weight_lifting_data.csv')
+    weight_lifting_data = pd.DataFrame(columns = ['Movement Name', 'Set Number', 'Weight', 'Reps', 'Date','Workout Name'])
+    weight_lifting_data.to_csv('weight_lifting_data.csv')
     print('weight_lifting_data.csv created!')
 else:
     print('weight_lifting_data.csv ready to go!')
 
 # Check if path for workout plan exists:
 if not os.path.exists('workout_plan.csv') or not valid_data_file():
-    # weight_lifting_data = pd.DataFrame(columns = ['Workout Name', 'Movement Name', 'Sets', 'Reps', 'Date', 'Notes'])
-    # weight_lifting_data.to_csv('workout_plan.csv')
+    weight_lifting_data = pd.DataFrame(columns = ['Workout Name', 'Movement Name', 'Sets', 'Reps', 'Date', 'Notes'])
+    weight_lifting_data.to_csv('workout_plan.csv')
     print('workout_plan.csv created!')
 else:
     print('workout_plan.csv ready to go!')
