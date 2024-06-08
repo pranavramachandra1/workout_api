@@ -18,7 +18,7 @@ class WorkoutData:
             return None
 
         self.weight_lifting_data = pd.read_csv('weight_lifting_data.csv')
-        self.workout_plan = pd.read_csv('workout_plan.csv', delimiter='\t')
+        self.workout_plan = pd.read_csv('workout_plan.csv')
     
     def get_weight_lifting_data(self):
         return self.weight_lifting_data
@@ -41,14 +41,15 @@ class WorkoutData:
         os.system("open new_workout_data.csv")
     
     def create_new_workout(self):
-        output = pd.DataFrame(columns = self.workout_plan.columns.tolist()[1:])
-        output.to_csv('new_workout_plan.csv')
+        output = pd.DataFrame(columns = ['Workout Name', 'Movement Name', 'Sets', 'Reps', 'Date', 'Notes'])
+        print(output.columns)
+        output.to_csv('new_workout_plan.csv', index = False)
         os.system("open new_workout_plan.csv")
     
-    def upload_new_workout_plan(self, workout_name):
+    def upload_new_workout_plan(self):
         new_plan = pd.read_csv(NEW_WORKOUT_PLAN_PATH)
-        new_plan['Workout Name'] = workout_name
         self.workout_plan = pd.concat([self.workout_plan, new_plan])
+        self.workout_plan.to_csv(WORKOUT_PLAN_PATH, index=False)
         print('Workout Uploaded!')
     
     def create_new_workout_data(self):
