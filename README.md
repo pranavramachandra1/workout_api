@@ -36,3 +36,5 @@ To create your workout:
 1. run 'create_workout_plan.py'
 2. fill out the CSV that's generated in 'new_workout_plan.csv'
 3. **SAVE THE CSV**, and run 'upload_workout_plan.py'
+
+If you have any questions, suggestions, or ideas, please send me an email at pranavramachandra@berkeley.edu. Thank you, and happy lifting!
