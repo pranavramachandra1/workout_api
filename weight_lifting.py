@@ -42,16 +42,19 @@ class WorkoutData:
     
     def create_new_workout(self):
         output = pd.DataFrame(columns = self.workout_plan.columns.tolist()[1:])
-        print(output.columns)
         output.to_csv('new_workout_plan.csv')
         os.system("open new_workout_plan.csv")
     
     def upload_new_workout_plan(self, workout_name):
-        assert(workout_name not in self.workout_plan['Workout Name'], 'Workout already exists')
         new_plan = pd.read_csv(NEW_WORKOUT_PLAN_PATH)
         new_plan['Workout Name'] = workout_name
         self.workout_plan = pd.concat([self.workout_plan, new_plan])
         print('Workout Uploaded!')
+    
+    def create_new_workout_data(self):
+        output = pd.DataFrame(columns = self.weight_lifting_data.columns.tolist()[1:])
+        output.to_csv('new_workout_data.csv')
+        os.system("open new_workout_data.csv")
 
     def upload_workout(self):
         new_workout = pd.read_csv(NEW_WORKOUT_DATA_PATH)

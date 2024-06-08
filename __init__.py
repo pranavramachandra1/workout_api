@@ -5,6 +5,9 @@ from weight_lifting import *
 import os
 
 def valid_data_file():
+    """
+    Checks if weight_lifting_data.csv exists and is formatted properly.
+    """
     if not os.path.exists('weight_lifting_data.csv'):
         return False
     weight_lifting_data = pd.read_csv('weight_lifting_data.csv')
@@ -13,6 +16,9 @@ def valid_data_file():
     return True
 
 def valid_plan_file():
+    """
+    Checks if workout_plan.csv exists and is formatted properly.
+    """
     if not os.path.exists('workout_plan.csv'):
         return False
     workout_plan = pd.read_csv('workout_plan.csv')
