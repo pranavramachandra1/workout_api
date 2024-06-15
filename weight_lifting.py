@@ -9,6 +9,9 @@ WORKOUT_PLAN_PATH = "workout_plan.csv"
 NEW_WORKOUT_DATA_PATH = "new_workout_data.csv"
 NEW_WORKOUT_PLAN_PATH = "new_workout_plan.csv"
 
+WORKOUT_DATA_COLUMNS = ['Movement Name', 'Set Number', 'Weight', 'Reps', 'Date','Workout Name']
+WORKOUT_PLAN_COLUMNS = ['Workout Name', 'Movement Name', 'Sets', 'Reps', 'Date', 'Notes']
+
 class WorkoutData:
 
     def __init__(self):
@@ -50,6 +53,7 @@ class WorkoutData:
         new_plan = pd.read_csv(NEW_WORKOUT_PLAN_PATH)
         self.workout_plan = pd.concat([self.workout_plan, new_plan])
         self.workout_plan.to_csv(WORKOUT_PLAN_PATH, index=False)
+        self.reprocess_workout_plan()
         print('Workout Uploaded!')
     
     def create_new_workout_data(self):
@@ -60,3 +64,16 @@ class WorkoutData:
     def upload_workout(self):
         new_workout = pd.read_csv(NEW_WORKOUT_DATA_PATH)
         self.weight_lifting_data = pd.concat([self.weight_lifting_data, new_workout])
+        self.weight_lifting_data.to_csv(WORKOUT_DATA_PATH)
+        self.reprocess_workout_data()
+        print('Workout Uploaded!')
+    
+    def reprocess_workout_plan(self):
+        df = pd.read_csv(WORKOUT_PLAN_PATH)
+        df = df[WORKOUT_PLAN_COLUMNS]
+        df.to_csv('workout_plan.csv')
+
+    def reprocess_workout_data(self):
+        df = pd.read_csv(WORKOUT_DATA_PATH)
+        df = df[WORKOUT_DATA_COLUMNS]
+        df.to_csv('weight_lifting_data.csv')

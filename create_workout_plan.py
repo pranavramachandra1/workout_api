@@ -1,5 +1,6 @@
 from weight_lifting import *
 
+breakpoint()
 w = WorkoutData()
 if w:
     w.create_new_workout()
